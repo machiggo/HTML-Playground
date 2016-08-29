@@ -1,2 +1,2 @@
 # playground
-Some experiments, tech stuff and the beginning auf something BIG
+Some experiments, tech stuff and start auf something great
