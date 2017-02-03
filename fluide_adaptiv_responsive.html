@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Fluides - adaptives Layout mit angepassten Darstellungen</title>
+
+<!-- Verschiedene Medientypen 
+all - alle Medientypen
+print - Druckstylesheets
+screen - Bildschirmdarstellung
+aural,speech - Sprachausgabe
+braille - Braillezeile , Brailletastaturen
+embossed - brailledrucker
+
+deprecated!!!
+tv,projektion - Bildschirmgeräte ohne Scrollfunktion
+handheld - Smartphones und kleine Bildschirme
+
+-->
+
+<link rel="stylesheet" type="text/css" href="start.css">
+<!-- Es ist auch möglich den querrie direkt beim Styleaufruf festzusetzen somit erübrigt es sich dann den Mediaquerrie nochmals im externen CSS aufzurufen-->
+<!--<link rel="stylesheet" type="text/css" href="start_min_width860.css" media="screen and (min-width:860px)">-->
+
+
+<!-- Conditional Comment für User-Agent kleiner IE9 -->
+ <!--nachfolgende Zeile Javascript trägt dafür Sorge das die neuen HTML5 Elemente auch im Internetexplorer kleiner IE9 funktionieren da dieser keine HTML5 Unterstützung aufweist. --> 
+<!--[if lt IE 9]>
+<style>
+article{
+/*width:calc(25% - 30px); funktioniert nur in modernen Browsern*/
+width:21%;
+padding:10px 1%;
+margin:1%;
+float:left;
+border:none;
+background:#f3f3f3;
+min-width:170px;
+}
+/*section:after{
+content:"";
+clear:both;
+display:table;
+}*/
+/*section{float:left;}
+footer{clear:both;}*/
+
+</style>
+<script src="js/ie/html5shiv.min.js"></script>
+<![endif]-->
+<!-- Shiv JS extern referenzieren -->
+ <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>-->
+<style>
+
+section{overflow:hidden;}
+/* Verknüpfung von Medientyp und -Merkmal der Medientyp ist screen und die Regelsätze innerhalb des Mediaquerries werden nur ausgeführt wenn das Browserfenster breiter ist als 860px */
+@media screen and (min-width:860px){
+  article{
+  /*width:calc(25% - 30px); funktioniert nur in modernen Browsern*/
+  width:21%;
+  padding:10px 1%;
+  margin:1%;
+  float:left;
+  border:none;
+  background:#f3f3f3;
+  min-width:170px;
+  }
+}
+/* Bereich wurde begrenzt, Regeln werden nur angewendet wenn das Browserfenster eine Breite zwischen 860px und 441px aufweist */
+@media screen and (max-width:859px) and (min-width:440px){
+#a2,#a3{
+float:left;
+width:42%;
+border:0;
+margin:2%;
+padding:10px 2%;
+background:maroon;
+}
+#a1,#a4{clear:both;
+color:#5F0C0E;
+border:3px dotted #5F0C0e;
+}
+
+}
+/* Vorangegangene Regeln gelten weiterhin jedoch ändert sich die Hintergrundfarbe vom Container #a2 sobald das Browserfenster eine Breite zwischen 1080 und 650 Pixeln aufweist.
+Dieser Mediquerrie wirkt also innerhalb der voran gegangenen definierten Bereiche.
+Gleiche Eigenschaften werden damit durch Selektorenwertigkeit beziehungsweise durch Reihenfolge Überschrieben.
+ */
+@media screen and (max-width:1080px) and (min-width:600px){
+#a3{background:#8CE445; color:#000;}
+}
+/* Die Regelsätze innerhalb dieses Media-querries finden nur Anwendung wenn das Browserfenster eine Breite zwischen 1 und 440px aufweist */
+@media screen and (max-width:439px){
+article{
+background:#8CE445;
+color:#000;
+}
+article:nth-of-type(2n){
+background:#65086E;
+color:#fff;
+}
+article:nth-of-type(2n) h2{
+background:#fff;
+color:#65086E;
+}
+}
+/* In vorangegangenen Beispielen wurde nur mit den Merkmalen min-width und max-width gearbeitet. Es ist ebenso möglich mit Geräte abhängigen Größen zu arbeiten zb. device-width, device-height, der Lage eines Gerätes (Hochformat/orientation:portrait, Querformat/orientation:landscape) mit orientation sowie den nativen Auflösungen selbst mit dem Merkmal resolution.
+
+Weitere Informationen finden Sie in der w3c Spezifikation:
+http://www.w3.org/TR/css3-mediaqueries/
+*/
+</style>
+
+<!-- Html Kommentar -->
+</head>
+
+<body>
+
+<header>
+  <h1>Fluides - adaptives Layout mit angepassten Darstellungen</h1>
+</header>
+<section>
+  <h2>Seitenbereich</h2>
+  <article id="a1">
+    <h2>Inhalt 1</h2>
+    <p>Das <strong>&lt;article&gt;</strong>  Element dient zur Einteilung von Inhalten in Sinnabschnitte, unter anderem in Blogbeiträgen. Der Unterschied zum <strong>&lt;section&gt; </strong> Element ist der, dass die Inhalte für sich alleine stehen. Es sind sozusagen isolierte Beiträge wie eben in Blog-Posts oder Inhalte in Websites. Dies bedeutet das ein oder mehrere <strong>&lt;article&gt;</strong>  Elemente in themenbezogenen <strong>&lt;section&gt;</strong>  Elementen optimal platziert sind.</p>
+  </article>
+  <article id="a2">
+    <h2>Inhalt 2</h2>
+    <p>Das <strong>&lt;section&gt;</strong> Element dient zur Unterteilung von Inhalten nach wirklich inhaltlichen Gesichtspunkten. Dieses Element stellt eine klare Trennung zwischen Abschnitten dar die inhaltlich gegeben ist. Elemente die Designzwecken dienen, werden in ein <strong>&lt;div&gt; </strong> Tag gesetzt, da sie kein inhaltliches Kriterium darstellen. Das <strong>&lt;section&gt;</strong> Element wird nur dort eingesetzt wo ein inhaltlicher Umbruch besteht.</p>
+  </article>
+  <article id="a3">
+    <h2>Inhalt 3</h2>
+    <p>Das <strong>&lt;article&gt;</strong>  Element dient zur Einteilung von Inhalten in Sinnabschnitte, unter anderem in Blogbeiträgen. Der Unterschied zum <strong>&lt;section&gt; </strong> Element ist der, dass die Inhalte für sich alleine stehen. Es sind sozusagen isolierte Beiträge wie eben in Blog-Posts oder Inhalte in Websites. Dies bedeutet das ein oder mehrere <strong>&lt;article&gt;</strong>  Elemente in themenbezogenen <strong>&lt;section&gt;</strong>  Elementen optimal platziert sind.</p>
+  </article>
+  <article id="a4">
+    <h2>Inhalt 4</h2>
+    <p>Das <strong>&lt;section&gt;</strong> Element dient zur Unterteilung von Inhalten nach wirklich inhaltlichen Gesichtspunkten. Dieses Element stellt eine klare Trennung zwischen Abschnitten dar die inhaltlich gegeben ist. Elemente die Designzwecken dienen, werden in ein <strong>&lt;div&gt; </strong> Tag gesetzt, da sie kein inhaltliches Kriterium darstellen. Das <strong>&lt;section&gt;</strong> Element wird nur dort eingesetzt wo ein inhaltlicher Umbruch besteht.</p>
+  </article>
+  <!--<span style="clear:both;display:block;"></span>-->
+</section>
+
+<footer>Fluides - adaptives Layout mit angepassten Darstellungen(responsive) </footer>
+</body>
+</html>
+
+
+
+
