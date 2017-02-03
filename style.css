@@ -1,0 +1,59 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{color:grey;}
+
+header:before{
+	content:url(img/logo.jpg);
+	margin-left:auto;
+	margin-right:auto;
+}
+
+header p{
+	font-family: alegreya-sc, serif;}
+	
+header {margin-left:auto;
+	margin-right:auto;text-align:center}
+
+
+.Spalte1 {float:left;width:30%;border-right:solid grey 1px;margin-left:20%;padding-right:1.5em}
+.Spalte1 p{padding-left:1.5em;}
+
+
+.Spalte1 img{width:150px;
+	height:250px;
+	padding:1.5em;
+	padding-top:0;
+	float:right;
+	}
+	
+.Spalte1 img:after{clear:right;}
+	
+.floatR{float:left;}
+
+
+img:nth-child(1){height:100px;width:120px;padding-right:5px;}  /* warum spricht diese Zeile beide bilder an? */
+	
+/* 
+
+img:nth-child(1):after{clear:both;}
+.Spalte1 img:nth-child(2){clear:both;height:50px;padding-right:5px;
+	}  
+geht nicht. Idee: --> Nach dem 2. Bild clearen, damit ich Größe des 3. Bildes ändern kann.
+	
+	 */
+
+.Bild3:before{clear:both;}
+.Bild3{height:0px;}
+
+.Spalte2{width:30%;}
+
+.Spalte2 {text-align:right;
+	margin-left:38%;
+	margin-right:62%;}
+.Spalte2 li{text-decoration:none;list-style-type:none;}
+.Spalte2 li a{text-decoration:none;}
+
+footer{clear:both;text-align:center;}
+
+.active a{color:lightgray;}
