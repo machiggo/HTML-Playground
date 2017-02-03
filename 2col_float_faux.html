@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Zweispalter - float</title>
+<link rel="stylesheet" href="start.css">
+<style>
+/* Abstande der start.css und alle Standard-Browserabstände überschreiben*/
+aside, article, footer, section, div, header, nav,*{margin:0;padding:0;}
+/* Innenliegenden direkten Kindern die Abstände zuweisen*/
+body>*>*,.content>*>*{margin:1em 0.5em;}
+.content>*{margin:0;padding:0;}
+.content nav,.content section{border:0;
+/*outline:1px solid #666;*/
+min-height:150px;
+padding-bottom:30000px;
+margin-bottom:-30000px;
+}
+nav{float:left;
+width:23%;
+min-width:200px;
+background:#ccc;
+}
+section{
+	float:left;
+	margin-bottom:1em;
+	width:75%;
+	margin-left:2%;
+	background:#ffc;
+	
+}
+footer{
+	/*float:left;*/
+	clear:both;
+	width:100%;
+	/*margin-top:400px;*/}
+	
+.content{border:0;overflow:hidden;}
+</style>
+</head>
+
+<body>
+	<!--<div class="wrap">-->
+	<!--<div role="Banner"></div>-->
+    <header><!-- Kopfbereich - Kopfzeile-->
+        <h1>Zwei Spalten mit float</h1>
+    </header>
+    <div class="content">
+    <nav><!-- Navigationsbereich - Hauptnavigation -->
+        <ul>
+            <li><a href="#" title="Link 1">Link 1</a></li>
+            <li><a href="#" title="Link 2">link 2</a></li>
+            <li><a href="#" title="Link 3">link 3</a></li>
+            <li><a href="#" title="Link 4">link 4</a></li>
+        </ul>
+    </nav>
+    <!--<div role="main"></div>-->
+    <!--<main> Das main Element besitzt keine semantische bedeutung sondern nur eine Aria-Landmark role und signalisiert Screenreader das es sich um den Hauptinhaltsbereich handelt.-->
+    <section><!-- Seitenabschnitt /Seitenbereich - Hauptinhaltsbereich-->
+        <h2>Überschrift für section</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, asperiores, possimus, rerum, vel deserunt cum quaerat molestias quod sunt nostrum eveniet veniam at nam quam laudantium accusantium facilis rem expedita.</p>
+         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, ad, atque, itaque, deleniti omnis soluta tenetur voluptates quo alias earum quos inventore magni ducimus architecto suscipit eaque sed ab sequi.</p>
+    </section>
+    </div>
+    <!--</main>-->
+    <footer><!--Fußbereich - Fußzeile-->
+        Zwei Spalten mit Float
+    </footer>
+    <!--</div>-->
+</body>
+</html>

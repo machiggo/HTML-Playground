@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Zweispalter - float</title>
+<link rel="stylesheet" type="text/css" href="start.css">
+<style>
+nav,section{
+margin:0.5%;
+padding:10px 2%;
+border:0;
+outline:1px solid #f00;
+}
+
+nav{
+float:left;
+width:15%;
+min-width:200px;
+}
+
+section{
+float:left;
+width:75%;
+/* Rundungsdifferenzen (Mischrechnungen Pixel und CSS) sorgen dafür das je nach Monitorauflösung Die berechnete Breite passt oder größer ist. Generell gilt: Es ist besser immer etwas Luft zu lassen und nicht das letzte Pixel auszunutzen. */
+}
+/* Allen direkten Kindern innerhalb der section einen Abstand links und rechts zuweisen um padding direkt an der section zu verweiden*/
+/*section>*{
+margin-left:10px;
+margin-right:10px;
+}*/
+footer{clear:both;
+}
+body{}
+/* angepasste Darstellung wenn der Viewport kleiner als 1080px ist*/
+@media screen and (max-width:1080px){
+/* Standardbreite Überschreiben*/
+nav,section{width:95%;}
+/* Listenpunkte in die horizontale zwingen*/
+nav li{display:inline-block;}
+}
+</style>
+</head>
+
+<body>
+<header>
+	<h1>Zwei Spalten mit Floats</h1>
+</header>
+
+<nav>
+	<ul>
+		<li><a href="#">link 1</a></li>
+		<li><a href="#">link 2</a></li>
+		<li><a href="#">link 3</a></li>
+		<li><a href="#">link 4</a></li>
+        <li><a href="#">link 1</a></li>
+		<li><a href="#">link 2</a></li>
+		<li><a href="#">link 3</a></li>
+		<li><a href="#">link 4</a></li>
+        <li><a href="#">link 1</a></li>
+		<li><a href="#">link 2</a></li>
+		<li><a href="#">link 3</a></li>
+		<li><a href="#">link 4</a></li>
+	</ul>
+</nav>
+
+<section>
+	<h2>Überschrift für section</h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, asperiores, possimus, rerum, vel deserunt cum quaerat molestias quod sunt nostrum eveniet veniam at nam quam laudantium accusantium facilis rem expedita.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur nam deleniti accusantium! Fugiat, inventore modi soluta in eius facere ipsum possimus quod animi dicta! Perspiciatis ea sapiente in repudiandae rerum!</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, impedit, animi maiores maxime numquam aliquam dignissimos vel repudiandae ullam consectetur distinctio labore rem optio ipsam officiis incidunt voluptates perferendis expedita.</p>
+
+</section>
+
+<footer>
+	Zwei Spalten mit float
+</footer>
+</body>
+</html>
