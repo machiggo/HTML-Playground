@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Html5 semantik</title>
+<link rel="stylesheet" type="text/css" href="raster.css">
+</head>
+
+<body class="test name">
+<div id="header" role="banner">
+<!-- WAI -Ariarollen -  Accessible Rich Internet Applications -->
+<!-- Bei den landmark roles geht es vor allem um ein Navigationskonzept für Tastaturnutzer und insbesondere Screenreader-Nutzer. Die landmark roles dienen dazu, eine Webseite in Bereiche aufzuteilen. Die Bereiche können insbesondere von Screenreadern per Tastatur angesteuert werden. 
+
+Die landmark roles erlauben die Unterteilung einer Webseite in generische und unabhängige Bereiche.
+
+role="banner" - (für ein HEADER- oder ein anderes Element mit seitenübergreifenden Inhalten wie das Logo)
+role="complementary" - (bei ASIDE-Elementen und ähnlichen Bereichen einer Webseite)
+role="contentinfo" (für ein FOOTER- oder ein anderes Element mit Informationen über den Inhalt der Webseite)
+role="main" (für das MAIN-Element einer Webseite oder ein anderes Element, das den seitenspezifischen Inhalt gruppiert)
+role="navigation" (bei NAV-Elementen und anderen Bereichen mit ausschließlich Links)
+
+Die semantischen HTML5 Strukturelemente besitzen automatisch diese Rollen, Sie dürfen nicht zugewiesen werden!
+
+
+-->
+	<header><!--Kopfbereich - Seitenkopf/Kopfzeile, Standard Aria-Rolle ist banner-->
+    	<div class="hgroup"><!-- Das <hgroup> Element wurde wieder aus HTML5 gestrichen da es keine Notwändigkeit gibt Überschriften logisch zu gruppieren. Falls ein gruppieren doch notwendig wird , zb. zur Formatierung, dann verwenden Sie bitte ein bedeutungsloses <div> Element -->
+    		<h1>Logo / Seitentitel</h1>
+    		<h3>Slogan / Subtitel</h3>
+    	</div>
+     </header>
+    	<nav><!-- navigationsbereich - Hauptnavigation- role="navigation"-->
+    	 	<ul>
+        		<li><a href="https://gsnedders.html5.org/outliner/" title="outline prüfen">Html5 Outliner</a></li>
+        		<li><a href="http://whatwg.org" title="Living Standard HTML">WHATWG</a></li>
+        		<li><a href="https://www.w3.org/TR/wai-aria/roles" title="Landmark- und Dokumentrollen">WAI-ARIA Roles</a></li>
+        		<li><a href="https://wiki.selfhtml.org/wiki/Webstandards/WAI-ARIA" title="Aria Rollen bei Selfhtml">Selfhtml</a></li>
+       	 </ul>
+    	</nav>
+</div>
+<!--<div id="slider">
+	<ul>
+    	<li>image</li>
+        <li>image</li>
+    </ul>
+</div>-->
+<!--
+<section>
+	<h2>Slider</h2>
+    <article>
+    	<h2>Überschrift</h2>
+        <h3>Subtitle</h3>
+        <p>kurzer Text</p>
+    </article>
+    <article>
+    	<h2>Überschrift</h2>
+        <h3>Subtitle</h3>
+        <p>kurzer Text</p>
+    </article>
+</section>
+-->
+<main class="row"><!-- Hauptinhaltsbereich - keine semantische bedeutung - role="main"-->
+	<section> <!-- Seitenabschnitt oder Seitenbereich role="region"-->
+		<h1>Seitenüberschrift - Teaser, Einleitungstext</h1>
+        <p>Herzlich willkommen, schön das Sie da sind -> vermeiden!</p>
+        <!--<span role="button" onClick="">Button</span>-->
+    </section>
+    <section class="col-70"><!-- Seitenbereich /Seitenabschnitt -->
+    	<h1>Seitenabschnittsüberschrift</h1>
+        <article><!-- eigenständiger Inhaltsbereich -->
+        	<header><!-- kopfbereich - Artikelkopf-->
+            	<h1>Blogbeitragsthema, Forenbeitragsüberschrift, News/Artikelüberschrift</h1>
+                <p>veröffentlicht am:<time datetime="2016-09-27T09:27">27.09.2016</time>
+                <!--<time datetime="hh:mm:ss">09:27:00 Uhr</time> - Das <time> Element besagt das es sich bei dem darin liegenden Ihnalt um eine zeitliche Angabe handelt. Das Element <time> ist ein Microdaten Element-->
+                    <!-- Datum/zeit , time = 27.09.2016 - 9:27:00 -->
+                </p>
+            </header>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, cupiditate, autem, similique quidem quibusdam optio ipsam ad qui eaque hic facilis repellendus tempore maiores tempora accusantium sed doloribus architecto. Recusandae.</p>
+            <h2>Zwischenüberschrift</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, cupiditate, autem, similique quidem quibusdam optio ipsam ad qui eaque hic facilis repellendus tempore maiores tempora accusantium sed doloribus architecto. Recusandae.</p>
+            
+            <footer><!-- Fußbereich - Artikelfuß role="contentinfo"-->
+            	<details><!-- Zusammenfassung/ Nachtrag -->
+                	<summary>Überschrift für details-element</summary>
+                    <p>Rezensionen, Kurzzusammenfassung, Nachtrag</p>
+                    <ul>
+                    	<li><a href="#">Quellenangabe</a></li>
+                        <li><a href="#">Quellenangabe</a></li>
+                        <li><a href="#">Quellenangabe</a></li>
+                    </ul>
+                    <figure><!-- Container für Medieninhalte -->
+                    	<figcaption>Überschrift für ein figure</figcaption>
+                    	<code>&lt;figure>
+                    	</code>
+                        <h4>Kommentar vom Nutzer:xyz</h4>
+                        <p>Datum: XX.XX.XXXX Uhrzeit: XX:XX</p>
+                    </figure>
+                </details>
+                <article>
+                	<h4>Kommentar vom Nutzer:xyz</h4>
+                    <p>Datum: XX.XX.XXXX Uhrzeit: XX:XX</p>
+                </article>
+            </footer>
+        </article>
+    </section>
+	<aside class="col-30"><!-- Nebenspalte, - die keinen direkten Bezug zum Hauptinhalt hat --> 
+    	<h2>Nebenspalte / Marginalie</h2>
+        <nav>
+        	<ul>
+            	<li><a href="#">Themenbereiche</a></li>
+                <li><a href="#">newskategorie</a></li>
+                <li><a href="#">oft gelesen</a></li>
+            </ul>
+        </nav>
+        <!-- Scoped Styles wirken nur innerhalb des Bereiches in dem Sie angegeben werden und funktionieren nur in HTML5-fähigen Browsern-->
+        <style scoped>
+		iframe{
+		border:0;
+		width:90%;
+		height:auto;
+		}
+		</style>
+        <iframe src="https://www.youtube.com/embed/MddZf2bZVjM"></iframe>
+        
+    </aside>
+    
+    <article class="row">
+    	<h2>Websprachen - Hauptthema / Gesamtüberschrift</h2>
+        <p>Die am häufigsten eingesetzten websprachen sind:</p>
+        <section class="col-3">
+        	<h2>Auszeichnungssprachen</h2>
+            <article>
+            	<h1>HTML - Überschrift des Themas</h1>
+            </article>
+            <article>
+            	<h1>XML-Überschrift des Themas</h1>
+            </article>
+        </section>
+        <section class="col-3">
+        	<h2>Programmiersprachen</h2>
+            <article>
+            	<h1>JAVASCRIPT-Überschrift des Themas</h1>
+            </article>
+            <article>
+            	<h1>PHP-Überschrift des Themas</h1>
+            </article>
+        </section>
+    </article>
+  
+<!--<section>
+        	<h1>Überschrift der 1. Ordnung in der 2. Ebene</h1>
+            <p>Die h1 dieser section ist in der Gesamtbedeutung des Dokumentes nur in diesem Bereich die Überschrift der ersten Ordnung!</p>
+            <section>
+        		<h1>Überschrift der 1. Ordnung in der 3. Ebene</h1>
+                <p>Die h1 dieser section ist in der Gesamtbedeutung des Dokumentes nur in diesem Bereich die Überschrift der ersten Ordnung!</p>
+                <section>
+        			<h1>Überschrift der 1. Ordnung in der 4.Ebene</h1>
+                    <p>Die h1 dieser section ist in der Gesamtbedeutung des Dokumentes nur in diesem Bereich die Überschrift der ersten Ordnung!</p>
+                    <section>
+        				<h1>Überschrift der 1. Ordnung in der 5. Ebene</h1>
+                        <p>Die h1 dieser section ist in der Gesamtbedeutung des Dokumentes nur in diesem Bereich die Überschrift der ersten Ordnung!</p>
+                        <section>
+        					<h1>Überschrift der 1. Ordnung in der 6. Ebene</h1>
+                            <p>Die h1 dieser section ist in der Gesamtbedeutung des Dokumentes nur in diesem Bereich die Überschrift der ersten Ordnung!</p>
+        				</section>
+        			</section>
+        		</section>
+        	</section>
+</section>-->
+</main>
+<footer><!--Fußbereich - Fußzeile-->
+	<h1>Kontaktbereiche</h1>
+    <section>
+    <h3>Visitenkarte</h3>
+    <dl id="hcard-hans-muster" class="vcard">
+    	<dt class="fn n">Hans Muster</dt>
+        <dd class="role" style="display:none;">Privatperson</dd>
+        <dd class="location adr">
+        	<span class="street-address">Musterstr. 10</span>
+            <span class="postal-code">01234</span>
+            <span class="locality">Musterstadt</span>
+        </dd>
+        <!--<dd class="voice">
+        	<span>Tel</span>.:
+            <span class="value">+49 123 456789</span>
+        </dd>-->
+        <dd class="tel">
+        	<span class="type">Tel</span>.:
+            <span class="value">+49 123 456789</span>
+        </dd>
+        <dd class="tel">
+        	<span class="type">Fax</span>:
+            <span class="value">+49 123 456789</span>
+        </dd>
+        <dd>
+        	<address>
+            <!--Webadresse von Hans Muster<a href="#" class="url">www.hans-muster.de</a>-->
+            Email:<a href="mailto:hans@muster.de" title="Mail an Hans Muster senden" class="email">hans@muster.de</a>
+            </address>
+        </dd>
+    </dl>
+    </section>
+</footer>
+</body>
+</html>

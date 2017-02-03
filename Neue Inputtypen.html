@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Neue Inputypen</title>
+<link rel="stylesheet" type="text/css" href="raster.css">
+<style>
+label+input{display:block;}
+datalist{display:none;}
+.require{
+position:relative;
+}
+.require:before{
+content:"*";
+padding:0 0.2em;
+position:absolute;
+left:-0.8em;
+/*margin-left:-0.8em;*/
+}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+</head>
+
+<body>
+<h1>Neue Inputtypen in HTML5</h1>
+<form action="PHP_boilerplate.php">
+	<fieldset>
+    	<legend>Neue Standard Inputtypen</legend>
+        <div>
+        	<label  for="text">Texteingabefeld</label>
+        	<input name="text" id="text" value="" placeholder="gib irgend etwas ein">
+        </div>
+        <div>
+            <label for="mail" class="require">Email</label>
+            <input type="email"
+                    name="email"
+                    id="mail"
+                    required
+                    title="Pflichtfeld - mit gültiger Emailaddresse ausfüllen"
+                    placeholder="name@domainname.tld">
+            <p>* Pflichtfeld -  muss ausgefüllt werden!</p>
+        </div>
+        <div>
+        	<label for="url" class="require">Webadresse</label>
+            <input type="url" name="url" id="url" placeholder="http://deine-domain.tld" required>
+            <p>* Pflichtfeld -  muss ausgefüllt werden!</p>
+        </div>
+        <div>
+        	<label for="plz" class="require">PLZ</label>
+            <input name="plz" id="plz" pattern="^[0-9]{5}$" required>
+             <p>* Pflichtfeld -  muss ausgefüllt werden!</p>
+        </div>
+        <div>
+        	<label for="suche">Suche</label>
+            <input name="suche" id="suche" value="suchen" type="search" list="vorschlaege" placeholder="Suchbegriff eingeben" onFocus="if(this.value=='suchen')this.value='';" onBlur="if(this.value=='')this.value='suchen'">
+            <datalist id="vorschlaege">
+            	<option>Hubert</option>
+                <option>Bünni</option>
+                <option>Frank</option>
+                <option>Martina</option>
+            </datalist>
+      	 		
+                 
+                 	option*31>{$} <br><br><br>
+                 <select name="monat"> </select>
+                 <select name="jahr"> </select>
+             <select name="tag"> 
+				<script>
+                	for(tag=1;tag<=31;tag++){
+						/* document.write("<option>");
+						document.write(tag);
+						document.write("</option>"); */
+						document.write("<option>",tag,"</option>")}
+                </script>        
+                </select>
+
+              	<select name="Monat"> 
+                <script>
+                	for(i=0;month<=12;month++){
+						/* document.write("<option>");
+						document.write(tag);
+						document.write("</option>"); */
+						document.write("<option>",month,"</option>")}
+                </script>   
+                </select>
+                
+                <select name="Monat"> 
+                <script>
+                	monat=["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"]
+					for(i=0;i<monat.length;i++){
+					document.write("<option>",monat[i],"</option>")}
+                </script>   
+                </select>
+                
+                <select name="jahr"> 
+                <script>
+                	for(year=2015;year<=2025;year++){
+						/* document.write("<option>");
+						document.write(tag);
+						document.write("</option>"); */
+						document.write("<option>",year,"</option>")}
+                </script>   
+                </select>
+                
+        </div>
+    </fieldset>
+    <input type="submit">
+</form>
+
+</body>
+</html>
