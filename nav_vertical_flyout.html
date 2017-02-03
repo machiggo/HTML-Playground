@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>vertikale Flyout-Navigation</title>
+<link rel="stylesheet" href="start.css">
+<style>
+/* Zweispalter */
+nav{
+float:left;
+width:10em;
+padding:0.5em;
+border:0;
+margin-top:0;
+}
+section{/*float:left;width:70%;*/
+margin-left:12em;
+}
+footer{clear:both;}
+/* Navigation*/
+ul,li{margin:0;padding:0;list-style:none;}
+ul{
+width:10em;
+/* Rahmen dienen an dieser Stelle nicht nur der optischen Makulator. Sie verhindern ein auseinanderschieben der Liste durch evtl. innenliegende Margins*/
+border:1px solid #fc0;
+border-bottom:0;
+}
+li{
+	/* Rahmen dienen an dieser Stelle nicht nur der optischen Makulator. Sie verhindern ein auseinanderschieben der Listenpunkte durch evtl. innenliegende Margins*/
+border-bottom:1px solid #fc0;
+background:#600;
+/*position:relative;*/
+}
+li a{
+color:#ffc;
+/* Inlineelement in der Darstellung zu einem Block wandeln damit Breiten und Höhen angegeben werden können */
+display:block;
+height:1em;
+/* Überdehnt den Anker, breiter als umschließendes Elternelement. Damit ist die Erreichbarkeit beim ausklappen der untergeordneten Liste gewährleistet*/
+width:10em;
+padding:0.5em;
+}
+/*li:hover a{padding:0.5em;}*/
+/* Verstecken */
+/* für Moderne Browser*/
+/*ul > li > ul*/
+ul li ul,ul li:hover ul li ul{
+/*display:none;*/
+position:absolute;
+left:-9999em;
+}
+/* hervorzaubern*/
+/* für Moderne Browser*/
+/*ul > li:hover > ul*/
+ul li:hover ul, ul li:hover ul li:hover ul{
+/*display:block;*/
+/*left:10.5em;*/
+/*top:-1px;*/
+left:auto;/* Die Eigenschaft left mit dem Wert auto bewegt das Element an seinen Ursprungsort zurück*/
+margin-left:10.5em;
+margin-top:-2em;
+}
+li:hover ul li:first-child{
+margin-top:-2px;
+/* Versatz von 1px Border-top am Ul ausgleichen da mit dem negativen margin das Li selbst auf das Ul gezogen wird und den Rahmen somit abdeckt. Nachfolgender Border-top sorgt wieder für die korrekte Darstellung drückt aber das li wieder um einen Pixel nach unten.
+Der negative Einzug muss somit um 1 px erhöht werden.*/
+border-top:1px solid #fc0;
+}
+li:hover{
+background:#060;
+}
+/* HasLayout für alte IE erzwingen */
+li li{zoom:1;min-height:100%;}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+</head>
+<body>
+	<header>
+    	<h1>vertikale Flyout-Navigation</h1>
+    </header>
+    <nav>
+    <ul>
+    	<li><a href="#" title="1">Link 1</a>
+        	<ul>
+            	<li><a href="#" title="1.1">Link 1.1</a></li>
+                <li><a href="#" title="1.2">Link 1.2</a>
+                
+                </li>
+            </ul>
+        </li>
+    	<li><a href="#" title="2" >Link 2</a></li>
+    	<li><a href="#" title="3">Link 3</a></li>
+    	<li><a href="#" title="4">Link 4</a>
+        	<ul>
+            	<li><a href="#" title="4.1">Link 4.1</a></li>
+                <li><a href="#" title="4.2">Link 4.2</a>
+                	<ul>
+                        <li><a href="#" title="4.2.1">Link4.2.1</a></li>
+                        <li><a href="#" title="4.2.2">Link4.2.2</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a href="#" title="5">Link 5</a></li>
+    </ul>
+    </nav>
+    <section>
+    	<h2>Navigation mit CSS</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, asperiores, possimus, rerum, vel deserunt cum quaerat molestias quod sunt nostrum eveniet veniam at nam quam laudantium accusantium facilis rem expedita.</p>
+
+    </section>
+    <footer>
+    	vertikale Flyout-Navigation
+    </footer>
+</body>
+</html>
+

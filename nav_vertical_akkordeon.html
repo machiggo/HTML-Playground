@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>vertikales Akkordeon</title>
+<link rel="stylesheet" href="start.css">
+<style>
+nav{
+width:10em;
+float:left;
+padding:0.5em;
+margin-top:0;
+border:0;
+}
+section{
+/*float:left;
+width:250px;*/
+margin-left:12em;
+}
+footer{clear:both;}
+
+/* Navigation */
+ul,li{margin:0;padding:0;list-style:none;}
+ul{border:1px solid #666;}
+ul ul{border:0;}
+
+ul li{
+background:#fbaf5d;
+border-bottom:1px #666 solid;
+}
+ul li a{
+display:block;
+padding:0.5em;
+color:#000;
+}
+/*#### Verkürzte Selektorschreibweisen ####*/
+/*ul li ul{display:none;}*/
+/*#punkt1 ul,#punkt2 ul{display:none;}*/
+/*[id^="punkt"] ul{display:none;}*/
+
+/*########################################*/
+
+/*################ Negation #############*/
+/* Bei der Pseudoklasse :not() handelt es sich um eine Negation.
+Es wird alles selektiert mit Ausnahme des selektors der innerhalb der runden Klammern angegeben wurde. */
+/*li:not([id$="3"]){background:red;}*/
+/* Nach diesem Prinzip lassen sich komplexe Selektorbedingungen aufbauen*/
+/*li:not(#punkt1) ul{display:none;}
+ /*########################################*/
+ 
+ /*############# Zielpseudoklasse ########*/
+ /* Die Pseudoklasse :target spricht ein benanntes Element nur dann an wenn es das Ziel ist (benannter Anker href="#irgendwas"  <element id="irgendwas">) */
+/*:target{border:1px solid red;}*/
+ /*########################################*/
+
+/*Positives verstecken - damit ist die navigation jedoch nicht mehr im IE8 benutzbar*/
+/*nav ul #punkt1 ul{display:none;}
+/* Einfaches einblenden */ 
+/*nav ul #punkt1:target ul{display:block;} */
+
+/* Folgende Selektoren entsprechen nachfolgendem nicht auskommentierten Regelsatz */
+/*
+nav ul #punkt1:target ul,
+nav ul #punkt2:target ul,
+nav ul #punkt3:target ul,
+nav ul #punkt4:target ul,
+nav ul #punkt5:target ul,
+nav ul #punkt1:not(:target) ul,
+nav ul #punkt2:not(:target) ul,
+nav ul #punkt3:not(:target) ul,
+nav ul #punkt4:not(:target) ul,
+nav ul #punkt5:not(:target) ul
+{display:none;}*/
+
+nav :target ul,
+nav :not(:target) ul
+{
+height:0;
+overflow:hidden;
+-webkit-transition:all 1.5s ease-in-out;
+-ms-transition:all 1.5s ease-in-out;
+-moz-transition:all 1.5s ease-in-out;
+transition:all 1.5s ease-in-out;
+/*transition-property:all - Eigenschaft die überblendet werden soll -> Alles */
+/* transition-duration:1.5s - Dauer der Überblendung*/
+/* transition-timing-function:ease-in-out; - Art der Überblendung */
+/*transition-delay:2s, 4s, 6s; Verzergögerung bei Begin,während, am Ende der Überblendung -> nicht eingesetzt!;*/
+}
+
+nav :target ul{
+height:86px;
+background:#fff;
+background:rgba(255,205,0,0.5);
+box-shadow:inset 13px 5px 5px #000;
+}
+ul li ul li{
+	background:none;
+	border-bottom:none;
+}
+ul li ul li a{
+border-left:10px solid #fbaf5d;
+/*color:#fff;*/
+}
+ul li ul li:last-child{
+border-bottom:12px solid #fbaf5d;
+}
+
+nav ul li:hover{
+background:#ffc;
+}
+nav ul li ul li:hover{
+background:rgba(255,255,255,0.5);
+}
+/*#list1,#list2,#list3,#list4,#list5*/
+nav li[id]{
+transition:all ease-in 1s;
+}
+nav li[id]:hover, nav li[id]:focus{
+border-radius:5px;
+transform:scale(1);
+box-shadow:0 0 5px #000;
+}
+
+/* Open - Close*/
+nav ul li{position:relative;}
+/* Wenn unser Li mit der ID , die nicht das Ziel ist, dann soll darinliegendes Element welches die klasse close besitzt, ausgeblendet werden*/
+nav ul :not(:target) .close{
+display:none;
+}
+.close{
+/* 2. Anker über  den ersten Anker legen und von links nach rechts erstrecken (Kaugummiprinzip)*/
+position:absolute;
+top:0;
+right:0;
+left:0;
+/* Ausrichtung und Formatierung */
+text-align:right;
+text-decoration:none;
+color:#000;
+text-transform:uppercase;
+font-size:60%;
+padding:1.05em 0.5em 1.35em;/* Padding + zeilenhöhe = Höhe des Ankers*/ 
+/* verstecken des X wenn gewünscht
+text-indent:99999em;
+overflow:hidden;
+*/
+}
+/* Hinweis, der bei hover eingeblendet wird und signalisiert dass das Element ausklappbar ist*/
+nav>ul>:not(:target)>a:first-child:hover:after{
+content:"^";
+position:absolute;
+font-size:80%;
+top:0.8em;
+right:0.5em;
+transform:rotate(180deg);
+}
+</style>
+</head>
+<body>
+	<header>
+    	<h1>vertikales Akkordeon</h1>
+    </header>
+    <nav>
+    <ul>
+    	<li id="punkt1"><a href="#punkt1" title="1">Link 1</a><a href="#" class="close">x</a>
+        	<ul>
+            	<li><a href="#" title="1.1">Link 1.1</a></li>
+                <li><a href="#" title="1.2">Link 1.2</a></li>
+            </ul>
+        </li>
+    	<li id="punkt2"><a href="#punkt2" title="2" >Link 2</a><a href="#" class="close">x</a>
+        	<ul>
+            	<li><a href="#" title="2.1">Link 2.1</a></li>
+                <li><a href="#" title="2.2">Link 2.2</a></li>
+            </ul>
+        </li>
+    	<li id="punkt3"><a href="#punkt3" title="3">Link 3</a><a href="#" class="close">x</a>
+        	<ul>
+            	<li><a href="#" title="3.1">Link 3.1</a></li>
+                <li><a href="#" title="3.2">Link 3.2</a></li>
+            </ul>
+        </li>
+    	<li id="punkt4"><a href="#punkt4" title="4">Link 4</a><a href="#" class="close">x</a>
+        	<ul>
+            	<li><a href="#" title="4.1">Link 4.1</a></li>
+                <li><a href="#" title="4.2">Link 4.2</a></li>
+            </ul>
+        </li>
+        <li id="punkt5"><a href="#punkt5" title="5">Link 5</a><a href="#" class="close">x</a>
+        	<ul>
+            	<li><a href="#" title="5.1">Link 5.1</a></li>
+                <li><a href="#" title="5.2">Link 5.2</a></li>
+            </ul>
+        </li>
+    </ul>
+    </nav>
+    <section>
+    	<h2>Navigation mit CSS</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, asperiores, possimus, rerum, vel deserunt cum quaerat molestias quod sunt nostrum eveniet veniam at nam quam laudantium accusantium facilis rem expedita.</p>
+
+    </section>
+    <footer>
+    	vertikales Akkordeon
+    </footer>
+</body>
+</html>

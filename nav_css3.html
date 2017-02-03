@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Tabreiternavigation mit CSS</title>
+<link rel="stylesheet" type="text/css" href="start.css">
+<style>
+nav{
+margin-bottom:0;
+padding-bottom:0;
+border:0;
+border-bottom:1px solid #360;
+-webkit-hyphens:auto;/* chrome-browser */
+-ms-hyphens:auto;/* IE 10*/
+-moz-hyphens:auto;
+hyphens:auto;/* Standardnotation lt. W3c*/
+
+}
+nav ul{
+	overflow:hidden;/* Clearen mit overflow , gleichzeitige Nutzung der Faux Columntechnik*/
+	list-style:none;
+	margin-bottom:0;
+	position:relative;
+	top:1px;
+	}
+
+nav li{float:left;
+margin-right:6px;
+}
+nav li a{
+	padding:5px 1.5em;
+	display:block;
+	text-align:center;
+	font-weight:600;
+	text-decoration:none;
+	/* Faux Columns - vorgetäuschte gleichlangen Spalten */
+	padding-bottom:150px;/* gleichmäßige Ausdehnung in Höhe der Hintergrundgrafik*/
+	margin-bottom:-150px;/* negativer Einzug in Höhe der erzwungenen Ausdehnung*/
+	/* Das ganze funktioniert nur in Kombination mit der Eigenschaft overflow am umschließenden Elternelement. Die Eigenschaft selbst ist in der Lage an einer festen Höhe abzuschneiden bzw. am letzten Inhalt!*/
+	border:2px solid #360;
+	border-radius:10px 10px 0 0;
+	background: rgb(241,231,103); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(241,231,103,1) 0%,rgba(254,182,69,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(241,231,103,1) 0%,rgba(254,182,69,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', endColorstr='#feb645',GradientType=0 ); /* IE6-9 */
+
+	}
+	
+section{
+	margin-top:0;
+	border-top:0;
+
+	
+}
+a:hover,a:focus{}
+nav li:hover, nav li:focus{
+
+}
+nav li a:hover,nav li:focus>a{
+
+}
+/*body#home [title="link1"],
+body#about [title="link2"],*/
+.active, .active:focus, .active:hover{
+;
+}
+.active a,.active a:hover,.active:focus a{
+;
+}
+</style>
+</head>
+<body id="about">
+<header>
+	<h1>Tabreiternavigation mit CSS</h1>
+</header>
+<!--
+Emmet Schreibweise (Eingabe wird mit tabulatortaste beendet!) weitere Informationen unter http://emmet.io:
+nav>ul>li*4>a[href="#"]{link $} 
+-->
+<nav>
+	<ul>
+		<li tabindex="1"><a href="#" title="link1">link 1<br>test</a></li>
+		<li tabindex="1" class="active"><a href="#" title="link2">Donaudampfschifffahrtsgesellschaft</a></li>
+		<li tabindex="1"><a href="#">link 3<br></a></li>
+		<li tabindex="1"><a href="#">link 4</a></li>
+         
+	</ul>
+</nav>
+<!-- section>h2{Überschrift für section}+p>lorem -->
+<section>
+	<h2>Navigation mit zwei CSS3-Verläufen</h2>
+     
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, asperiores, possimus, rerum, vel deserunt cum quaerat molestias quod sunt nostrum eveniet veniam at nam quam laudantium accusantium facilis rem expedita.</p>
+</section>
+
+<footer>
+	Tabreiternavigation mit CSS
+</footer>
+</body>
+</html>
+

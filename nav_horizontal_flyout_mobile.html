@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>horizontale Flyout-Navigation mobile</title>
+<link rel="stylesheet" href="start.css">
+<style>
+
+nav{
+padding:0.5em;
+border:0;
+margin-top:0;
+}
+
+footer{clear:both;}
+
+/* Navigation*/
+ul,li{margin:0;padding:0;list-style:none;}
+ul{
+width:auto;
+/* Rahmen dienen an dieser Stelle nicht nur der optischen Makulator. Sie verhindern ein auseinanderschieben der Liste durch evtl. innenliegende Margins*/
+border:1px solid #fc0;
+border-bottom:0;
+/*wenn Abstand zwichen erster und 2. Ebene nicht gewünscht ist Rahmen Links und rechts entfernen oder Rahmenfarbe auf Transparent setzen*/
+/*border-left:0;
+border-right:0;*/
+border-color:transparent;
+/* Overflow:hidden zum clearen kann nicht eingesetzt werden wenn weitere Ebenen nicht im Elementfluss sind bzw. eine Feste Höhe am Elternelement der Navigation oder am Ul selbst benötigt wird*/
+/*overflow:hidden;*/
+}
+/* Clearen */
+ul:after{
+content:"";
+display:table;
+clear:both;
+}
+
+li{
+float:left;
+/* Rahmen dienen an dieser Stelle nicht nur der optischen Makulator. Sie verhindern ein auseinanderschieben der Listenpunkte durch evtl. innenliegende Margins*/
+border-bottom:1px solid #fc0;
+background:#600;
+/*position:relative;*/
+}
+
+/* 2. Ebene Nicht mitfloaten oder Breite vergeben*/
+/*li ul{
+width:10em;
+}*/
+li li{
+float:none;
+}
+
+
+li a{
+color:#ffc;
+/* Inlineelement in der Darstellung zu einem Block wandeln damit Breiten und Höhen angegeben werden können */
+display:block;
+height:1em;
+/* Überdehnt den Anker, breiter als umschließendes Elternelement. Damit ist die Erreichbarkeit beim ausklappen der untergeordneten Liste gewährleistet sofern das ul auch in der Breite begrenzt wird!*/
+width:10em;
+padding:0.5em;
+}
+
+a:hover,a:focus{color:#fff;}
+
+/* Verstecken */
+/* für Moderne Browser*/
+/*ul > li > ul*/
+ul li ul,ul li:hover ul li ul{
+/*display:none;*/
+position:absolute;
+left:-9999em;
+}
+
+
+/* hervorzaubern*/
+
+/* für Moderne Browser*/
+/*ul > li:hover > ul*/
+ul li:hover ul{
+/* wenn die zweite Ebene nach unten ausklappt muss darauf geachtet werden das zwischen erster und zweiter ebene kein Abstand entsteht*/
+left:auto;/* Die Eigenschaft left mit dem Wert auto bewegt das Element an seinen Ursprungsort zurück*/
+margin-left:0;
+/*padding-top:1em;*/
+width:10em;/* Wenn innenliegende Kinder nicht nebeneinander stehen sollen. Soll die 3. Ebene optisch neben der 2. Ebene stehen muss die 2. Ebene eine Breite erhalten damit die Überdehnung am Anker funktioniert!*/
+}
+
+/* Ausklappen der dritten Ebene wie nav vertikal flyout */
+ul li:hover ul li:hover ul{
+left:auto;/* Die Eigenschaft left mit dem Wert auto bewegt das Element an seinen Ursprungsort zurück*/
+margin-left:10.5em; 
+margin-top:-2em;
+ }
+
+/* Falls Abstand zum ersten Hauptmenüpunkt gewünscht ist */	 
+li:hover ul li:first-child{
+margin-top:0.5em;
+/* Alternative - ggf. hintergrundfarbe nicht an das li sondern an den Anker*/
+/*border-top:2em solid transparent;*/
+}
+
+li:hover ul li:hover li:first-child{/* Versatz von 1px Border-top am Ul ausgleichen da mit dem negativen margin das Li selbst auf das Ul gezogen wird und den Rahmen somit abdeckt. Nachfolgender Border-top sorgt wieder für die korrekte Darstellung drückt aber das li wieder um einen Pixel nach unten.
+Der negative Einzug muss somit um 1 px erhöht werden.*/
+border-top:1px solid #fc0;
+margin-top:-2px;
+}
+li:hover{
+background:#060;
+}
+/* HasLayout für alte IE erzwingen */
+li li{zoom:1;min-height:100%;}
+/* Alternative Naviagtion verstecken*/
+#responsive-menu{
+display:none;
+}
+@media screen and (max-width:60em){
+ /* normale navi verstecken*/
+nav ul{display:none;}
+/* alternative Navi einblenden*/
+#responsive-menu{display:block;}
+
+/* Usabillity verbessern*/
+/* Nav an der Viewportoberkante fixieren damit Sie dauerhaft erreichbar bleibt*/
+nav{position:fixed;
+top:0;
+left:0;
+right:0;
+background:#600;
+margin:0;
+}
+#responsive-menu select{
+width:100%;
+padding:0.5em;
+font-size:1.2em;
+}
+#responsive-menu option{
+padding:0.2em;
+background:#060;
+color:#ffc;
+}
+/* Abstand reservieren damit alle Inhalte sichtbar bleiben */
+/*body{padding-top:3em;}*/
+header{margin-top:5em;}
+}
+
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+</head>
+<body>
+	<header>
+    	<h1>horizontale Flyout-Navigation mobile</h1>
+    </header>
+    <nav>
+    <ul>
+    	<li><a href="#" title="1">Link 1</a>
+        	<ul>
+            	<li><a href="#" title="1.1">Link 1.1</a></li>
+                <li><a href="#" title="1.2">Link 1.2</a>
+                
+                </li>
+            </ul>
+        </li>
+    	<li><a href="#" title="2" >Link 2</a></li>
+    	<li><a href="#" title="3">Link 3</a></li>
+    	<li><a href="#" title="4">Link 4</a>
+        	<ul>
+            	<li><a href="#" title="4.1">Link 4.1</a></li>
+                <li><a href="#" title="4.2">Link 4.2</a>
+                	<ul>
+                        <li><a href="#" title="4.2.1">Link4.2.1</a></li>
+                        <li><a href="#" title="4.2.2">Link4.2.2</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a href="#" title="5">Link 5</a></li>
+    </ul>
+ 	<form action="#" id="responsive-menu">
+    	<select onChange="location=this.options[this.selectedIndex].value">
+        <!-- .this - Die methode this spricht das aktuell ausgewählte Element an-->
+        <!-- Da es mehrere Option-Elemente gibt liegt ein Array vor. SelectedIndex ist der Arrayindex das erste option-Element hat somit den Wert 0. Value weist den Inhalt des Attributes als Wert zu-->
+        	<option value="#">Link 1</option>
+            <option value="http://caniuse.com">Link 2</option>
+            <optgroup label="Ebene 2">
+            	<option value="nav_horizontal_flyout.html">Link 2.1</option>
+            	<option>Link 2.2</option>
+            </optgroup>
+            <option>Link 3</option>
+            <optgroup label="Ebene 2">
+            	<option>Link 3.1</option>
+            	<option>Link 3.2</option>
+            </optgroup>
+            <optgroup label="Ebene 3">
+            	<option>Link 3.2.1</option>
+            	<option>Link 3.2.2</option>
+            </optgroup>
+        </select>
+    </form>
+    </nav>
+    <section>
+    	<h2>Navigation mit CSS</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, asperiores, possimus, rerum, vel deserunt cum quaerat molestias quod sunt nostrum eveniet veniam at nam quam laudantium accusantium facilis rem expedita.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, asperiores, possimus, rerum, vel deserunt cum quaerat molestias quod sunt nostrum eveniet veniam at nam quam laudantium accusantium facilis rem expedita.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, asperiores, possimus, rerum, vel deserunt cum quaerat molestias quod sunt nostrum eveniet veniam at nam quam laudantium accusantium facilis rem expedita.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, asperiores, possimus, rerum, vel deserunt cum quaerat molestias quod sunt nostrum eveniet veniam at nam quam laudantium accusantium facilis rem expedita.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, asperiores, possimus, rerum, vel deserunt cum quaerat molestias quod sunt nostrum eveniet veniam at nam quam laudantium accusantium facilis rem expedita.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, asperiores, possimus, rerum, vel deserunt cum quaerat molestias quod sunt nostrum eveniet veniam at nam quam laudantium accusantium facilis rem expedita.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, asperiores, possimus, rerum, vel deserunt cum quaerat molestias quod sunt nostrum eveniet veniam at nam quam laudantium accusantium facilis rem expedita.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, asperiores, possimus, rerum, vel deserunt cum quaerat molestias quod sunt nostrum eveniet veniam at nam quam laudantium accusantium facilis rem expedita.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, asperiores, possimus, rerum, vel deserunt cum quaerat molestias quod sunt nostrum eveniet veniam at nam quam laudantium accusantium facilis rem expedita.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, asperiores, possimus, rerum, vel deserunt cum quaerat molestias quod sunt nostrum eveniet veniam at nam quam laudantium accusantium facilis rem expedita.</p>
+        
+
+    </section>
+    <footer>
+    	horizontale Flyout-Navigation mobile
+    </footer>
+</body>
+</html>
+
